@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Hope Agnes</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#b8e6ff,#d9f3ff,#f4d35e);
+overflow-x:hidden;
+text-align:center;
+color:#fff;
+}
+
+header{
+padding:60px 20px;
+}
+
+h1{
+font-size:3rem;
+text-shadow:2px 2px 10px rgba(0,0,0,.3);
+}
+
+h2{
+margin-top:10px;
+font-weight:normal;
+}
+
+.photo{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:8px solid gold;
+margin:30px auto;
+display:block;
+box-shadow:0 0 25px gold;
+}
+
+.message{
+max-width:800px;
+margin:auto;
+padding:30px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(10px);
+border-radius:20px;
+line-height:1.8;
+font-size:18px;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:40px;
+}
+
+.gallery img{
+width:220px;
+height:220px;
+border-radius:15px;
+object-fit:cover;
+border:4px solid gold;
+}
+
+button{
+padding:15px 35px;
+margin:30px;
+font-size:18px;
+background:gold;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-weight:bold;
+color:#004466;
+}
+
+.balloon{
+position:fixed;
+bottom:-120px;
+width:60px;
+height:80px;
+border-radius:50%;
+opacity:.8;
+animation:float linear infinite;
+}
+
+.balloon:after{
+content:"";
+position:absolute;
+left:29px;
+top:80px;
+width:2px;
+height:70px;
+background:white;
+}
+
+@keyframes float{
+from{transform:translateY(0);}
+to{transform:translateY(-120vh);}
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+.gift{
+font-size:90px;
+cursor:pointer;
+transition:.4s;
+}
+
+.gift:hover{
+transform:scale(1.2);
+}
+
+.hidden{
+display:none;
+}
+
+footer{
+padding:50px;
+font-size:20px;
+}
+
+@media(max-width:700px){
+
+h1{
+font-size:2.1rem;
+}
+
+.photo{
+width:170px;
+height:170px;
+}
+
+.gallery img{
+width:140px;
+height:140px;
+}
+
+.message{
+margin:20px;
+font-size:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<header>
+
+<h1>🎉 Happy Belated Birthday Hope Agnes 🎉</h1>
+
+<h2> 23 years old ❤️</h2>
+
+<img src="hope.jpg" class="photo">
+
+<div class="message">
+
+<p>
+
+My Dearest Hope,
+
+I know this wish is a little late, but it comes straight from my heart.
+
+I'm truly sorry for missing your birthday. You deserve to be celebrated every single day because you are an amazing sister, a wonderful friend and one of God's greatest blessings in my life.
+
+May this new year bring you peace, happiness, success, good health and endless smiles.
+
+Never stop believing in yourself because you are capable of incredible things.
+
+Thank you for being such an amazing sister.
+
+I love you so much.
+
+❤️ Hattie ❤️
+
+</p>
+
+</div>
+
+<button onclick="openGift()">
+
+🎁 Open Your Birthday Gift
+
+</button>
+
+<div id="surprise" class="hidden">
+
+<h2>🎂 Surprise! 🎂</h2>
+
+<p style="padding:20px;font-size:22px;">
+
+May God bless you beyond your imagination.
+
+Happy Birthday once again Hope Agnes.
+
+💙💛
+
+</p>
+
+</div>
+
+<h1 class="gift" onclick="openGift()">
+
+🎁
+
+</h1>
+
+<audio id="music"controls>
+
+<source src="song.mp4" type="audio/mpeg">
+
+</audio>
+
+</header>
+
+<section>
+
+<h2>Beautiful Memories 📸</h2>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+
+<img src="photo2.jpg">
+
+<img src="photo3.jpg">
+
+</div>
+
+</section>
+
+
+<script>
+
+function openGift(){
+
+document.getElementById("surprise").classList.remove("hidden");
+
+document.getElementById("music").play();
+
+}
+
+// Floating Balloons
+
+const balloonColors=["#87CEFA","#FFD700","#FFFFFF","#ADD8E6"];
+
+for(let i=0;i<25;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.left=Math.random()*100+"%";
+
+b.style.background=balloonColors[Math.floor(Math.random()*balloonColors.length)];
+
+b.style.animationDuration=(8+Math.random()*6)+"s";
+
+document.body.appendChild(b);
+
+}
+
+// Floating Hearts
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💙";
+
+heart.style.position="fixed";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top="100vh";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+heart.style.transition="all 6s linear";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.style.transform="translateY(-120vh)";
+
+heart.style.opacity="0";
+
+},100);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6200);
+
+},500);
+
+// Confetti
+
+const canvas=document.getElementById("confetti");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let confetti=[];
+
+for(let i=0;i<250;i++){
+
+confetti.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*6+2,
+
+d:Math.random()*250,
+
+c:["#FFD700","#87CEFA","#FFFFFF","#ADD8E6"][Math.floor(Math.random()*4)]
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+confetti.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.fillStyle=p.c;
+
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+ctx.fill();
+
+p.y+=2;
+
+if(p.y>canvas.height){
+
+p.y=0;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+// Fireworks
+
+setInterval(()=>{
+
+let fw=document.createElement("div");
+
+fw.innerHTML="✨";
+
+fw.style.position="fixed";
+
+fw.style.left=Math.random()*100+"vw";
+
+fw.style.top=Math.random()*60+"vh";
+
+fw.style.fontSize="55px";
+
+fw.style.transition="all 1s";
+
+document.body.appendChild(fw);
+
+setTimeout(()=>{
+
+fw.style.transform="scale(3)";
+
+fw.style.opacity="0";
+
+},100);
+
+setTimeout(()=>{
+
+fw.remove();
+
+},1200);
+
+},800);
+
+window.onresize=function(){
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+};
+
+</script>
+
+<footer>
+
+<h2>🎂 Happy Birthday Hope Agnes 🎂</h2>
+
+<p>
+
+May God bless you with love,
+
+joy,
+
+good health,
+
+peace,
+
+success,
+
+and endless happiness.
+
+</p>
+
+<br>
+
+<h3>Made with ❤️ by Hattie</h3>
+
+</footer>
+
+</body>
+</html>
